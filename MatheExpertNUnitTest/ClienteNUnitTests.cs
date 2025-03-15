@@ -11,16 +11,23 @@ namespace MatheExpertNUnitTest
     [TestFixture]
     class ClienteNUnitTests
     {
+        private Cliente? cliente;
+
+        [SetUp]
+        public void SetUp()
+        {
+            cliente = new Cliente();
+        }
+
         [Test]
         public void SaludoCliente_IngresarNombreApellido_ObtenerSaludoNombreCompleto()
         {
 
-            Cliente cliente = new Cliente();
-
+          
             string saludo = cliente.SaludoCliente("edwin", "martinez");
 
             Assert.That(saludo, Is.EqualTo("hola, edwin martinez"));
-
+            Assert.That(saludo, Does.Match("hola, [a-z]+ [a-z]+"));
 
         }
     }
